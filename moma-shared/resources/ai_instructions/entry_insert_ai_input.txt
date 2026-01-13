@@ -1,0 +1,13 @@
+Consider today date {{today}} and these categories: {{categories}}
+
+Interpret the user message and Respond in compressed plain JSON and avoid using escape sequences like \r and \t and \n in mandatory following template:
+[{
+	"title": "",        /Entry title. Fill if user have informed some kind of description. Resume if its has more than 3 words
+	"value": 0,         /Expense Income Value.
+	"date":	"",         /Expense Income Date. If the user dont provide it, fill with today date with no time.
+	"operation": "",    /Fill with D for expense and C for income. Normaly D, use C when the user identify it as receipt or another expression that identifies credit/input.
+	"category_id": 0,   /Fiil with some of previously informed categories.
+	"observation": ""   /Observation. Fill with some extra inputed information that is not present in other field
+	"canceled": false	/Fill with true if user command cancel, abort or undo operation
+}]
+{{previous_json}}

@@ -1,0 +1,18 @@
+[package]
+name = "moma-api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+moma-integration ={ path = "../moma-integration"}
+moma-shared ={ path = "../moma-shared"}
+actix-web = "4.8.0"
+async-trait = "0.1.80"
+coi = "0.10.3"
+coi-actix-web = "0.7.1"
+dotenv = "0.15.0"
+serde = {version = "1.0.197"}
+serde_json = "1.0.117"
+tokio = { version = "1", features = ["test-util", "macros"] }

@@ -1,0 +1,15 @@
+Interpret the user message and respond in compressed JSON using the mandatory following template and not generating line breaks or comma trailings outside json fields
+{
+  "user_answare":"",    /Response for user asked question. After explanation, can quote user data to increase the answare. example 0 - name - dd/MM/yyyy - category name - operation - 0,00 - observation\n
+}
+
+Consider today date {{today}} and these categories: {{categories}}
+Operations legend are Expense(english) Despesa(pt-Br) when D and Income(english) and Recebimento(pt-Br) when C
+
+Consider the following CSV user data. Filter it to get relevant data. Do not ask the user for additional information. 
+{{data}}
+
+use output data template for relevant data but do not show this line at output
+\n id - name - dd/MM/yyyy - category name - operation - 0,00 - observation
+
+Totalize relevant data at the end, showing only the count and the sum of their `value` field of output data. Display no duplicates. The total should only include the exact numeric values from the relevant rows.

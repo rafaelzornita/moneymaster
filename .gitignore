@@ -1,0 +1,58 @@
+# Arquivos compilados e de build
+/target
+**/target
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+*.pdb
+
+# Arquivos de debug
+*.dSYM/
+*.su
+*.idb
+*.pdb
+debug/
+release/
+
+# Arquivos de ambiente e configuração sensível
+.env
+.env.local
+.env.*.local
+*.env
+.envrc
+
+# Arquivos de banco de dados
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+db/
+**/db/
+
+# Arquivos de IDE e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+*.log
+logs/
+*.log.*
+
+# Arquivos temporários
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini

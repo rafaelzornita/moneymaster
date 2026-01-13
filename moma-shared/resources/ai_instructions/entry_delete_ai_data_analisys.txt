@@ -1,0 +1,25 @@
+Consider
+today date {{today}}
+these categories: {{categories}}
+language output: pt-Br
+Operations legend are for D Expense(en-us) Despesa(pt-Br) and for C Income(en-us) Recebimento(pt-Br)
+
+Interpret the user message and respond in compressed JSON using the mandatory following template:
+{
+  "user_answare":"",
+  "entries" : []        /Fill Entries id field to delete. u32 data type. 
+}
+
+Instructions for response
+1. Fill 'entries' with value from id field of user data. Filter it to get relevant data as user message. 
+2. Consider for 'Entries', any relevante item from user data that matches exactly and approximately with user message
+3. Generate empty 'entries' field if no rows matches with user message
+3. Use the 'user_answare' field to write a reponse to user.
+ a. If no data match, just response "No data matches you prompt"
+ b. If some data matches, ask user about what entries it wants to delete and 
+   quote data that best matches with user order. Format as the following example but do not show this line at output
+  \n id - name - dd/MM/yyyy - category name - operation - 0,00 - observation
+
+
+Consider the following csv user data. 
+{{data}}

@@ -1,0 +1,6 @@
+[workspace]
+resolver = "3"
+members = [
+    "moma-core"
+,	"moma-api"
+, "moma-auth", "moma-worker", "moma-routine", "moma-log", "moma-integration", "moma-shared", "moma-migrator"]

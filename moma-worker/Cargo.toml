@@ -1,0 +1,19 @@
+[package]
+name = "moma-worker"
+version = "0.1.0"
+edition = "2021"
+resolver = "3"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+moma-core={path = "../moma-core"}
+moma-auth={path = "../moma-auth"}
+moma-routine={path = "../moma-routine"}
+moma-integration={path = "../moma-integration"}
+moma-shared={path = "../moma-shared"}
+dotenv = "0.15.0"
+tokio = { version = "1", features = ["test-util", "macros"] }
+async-trait="*"
+serde_json = "1.0.117"
+tokio-cron-scheduler = "0.13.0"
+chrono = {version = "0.4.35"}

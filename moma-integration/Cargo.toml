@@ -1,0 +1,26 @@
+[package]
+name = "moma-integration"
+version = "0.1.0"
+edition = "2021"
+resolver = "3"
+
+[dependencies]
+regex= {version = "1.10.3"}
+lettre = "0.11.6"
+lettre_email = "0.9.3"
+amqprs={version = "*", features = ["urispec", "tls"]}
+tokio = { version = "*", features = ["test-util", "macros"] }
+async-trait = "*"
+serde = {version = "1.0.197"}
+serde_json = "1.0.117"
+moma-shared={path = "../moma-shared"}
+#HttpClient
+isahc = {version = "0.6.0", features = ["json"]}
+#Template manager
+handlebars = "6.0.0"
+
+#openai-rust = "*"
+openai_dive = "1.1.0"
+
+#uncomment to compile to linux
+#openssl = { version = "0.10.64", features = ["vendored"] }

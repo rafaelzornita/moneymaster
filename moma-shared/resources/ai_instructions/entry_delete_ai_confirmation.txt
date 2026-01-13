@@ -1,0 +1,28 @@
+Consider today date {{today}} week beginning at monday and these categories: {{categories}}
+
+Interpret the user message and respond in compressed JSON using the mandatory following template:
+{
+  "user_answare":"",
+  "entries" : []        /Entries id to delete
+  "canceled":false, 
+  "confirmed_by_user":false /True if user has confirmed the operation
+}
+
+Consider the following csv user data and the sequence of rows
+{{data}}
+
+If user just consent with exclusion and data contains just one row. Consider the row as choosen.
+If data has more than one row, user must choose one or more of the above user data. They can use expressions like "first row", "second row", "last row", "all", or some identifying information from the provided data.  
+Interpret these user-specific inputs as follows:
+- "First row" - The entry with the lowest row number.
+- "Second row" - The entry with the second lowest row number.
+- "Last row" or "Anyone" - The entry with the highest row number.
+- All - All rows
+- Yes - first row when have just one on user data
+- No - Set canceled field as true
+
+If the user input is unclear, return a response suggesting potential corrections but do not ask user for new informations. Also ask user to 'try again'.
+Set canceled True if ocurred some problem or user message is out of context or user wants to delete not listed entry or user has canceled
+Fill the json with one or more ids as user input. 
+
+

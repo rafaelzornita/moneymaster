@@ -1,0 +1,26 @@
+[package]
+name = "moma-routine"
+version = "0.1.0"
+edition = "2021"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sea-orm = { version = "0.12.13", features = ["sqlx-sqlite", "runtime-tokio-rustls", "macros", "with-chrono" ] }
+sea-orm-migration ={ version = "0.12", features = ["runtime-tokio-rustls", "sqlx-sqlite"]}
+tokio = { version = "1", features = ["test-util", "macros"] }
+chrono = {version = "0.4.35"}
+serde = {version = "1.0.197"}
+serde_json = "1.0.117"
+dotenv = "0.15.0"
+rand ="*"
+regex= {version = "1.10.3"}
+async-trait = "*"
+handlebars = "6.0.0"
+strum_macros = "0.26.4"
+rusty-money = { version = "*", features = ["iso"] }
+moma-core ={ path = "../moma-core"}
+moma-auth ={ path = "../moma-auth"}
+moma-integration ={ path = "../moma-integration"}
+moma-shared ={ path = "../moma-shared"}

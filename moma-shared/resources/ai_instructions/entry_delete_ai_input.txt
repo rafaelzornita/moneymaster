@@ -1,0 +1,32 @@
+Consider today date {{today}} week beginning at monday and these categories: {{categories}}
+
+Interpret the user message and respond in compressed JSON using the mandatory following template without line breaks or spaces.
+{
+  "filter": [{          /See filter array topic 
+	"description": "",  /Fill if user have informed some kind of description. Accepts just one word
+	"value": 0,			/Valid if used beside another value. Remove field if zero.
+	"initial_date": "", /Required. Period start
+	"final_date": "",   /Required. Period end
+	"operation": "",    /Optionally Fill with D for expense and C for income
+	"categories": [],   /Fill with previously informed categories id if user informed one or more category names
+  }],
+  "user_answare":"",   /Not fill if its possible to fill the filter field
+  "canceled":false,     /True if ocurred some problem or user message is not enough to fill create at least one filter object
+  "ErrorMessage":""
+}
+
+User wants remove one or more registered data, extract the context and subject, converts the principal words to singular and disregard extra information that was informed to aditional operation
+Imagine user wants to exclude data and we need find it, but user dont remember exactly how it was stored so we need to fragment user input text to get wanted results by parts
+and to do it we have Filter array:
+Objects in array will be used to seach data on costumer SQL database. 
+Fields inside object are processed with AND operation and OR operation is applied between array items.
+Know that Data on database was possible not stored as user has informed on input so to find out the records, follow these rules: 
+0. First, extract the text to search, period and match words with some category if its clear about it, keep it in memory.
+1. Create an filter item as the response template and fill it with the relavant categories if user has informed one or more, date, and other fields.
+2. Get acronyms and split the text in many relevant words or expressions and then generate many 'filter' different items. Don't fill categories field in these items. Generate how many 'filter' items you can but at least 3 items with text variations inverting verbal tenses, substantives to verbs and plurals to singulars.
+3. Initial_date and final_date are required so include them in any generated item
+4. Use date or period from user input, if some date is informed with no year part, use the current year. If date or period was not informed use initial date as 30 days ago and final date as today
+5. If user informed more data in beyond the period, include initial date, final date inside items avoiding generating some 'filter' item just with date fields.
+7. generate many array items varying the possible filter combinations
+8. Avoid using category name in other search fields
+9. Keep just the filled and required fields, remove empty optional fields and zero lenght fields.

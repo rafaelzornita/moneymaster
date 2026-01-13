@@ -1,0 +1,10 @@
+[package]
+name = "moma-migrator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+moma-core={path = "../moma-core"}
+moma-auth={path = "../moma-auth"}
+moma-routine={path = "../moma-routine"}
+tokio = { version = "1", features = ["test-util", "macros"] }
