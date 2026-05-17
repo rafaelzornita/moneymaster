@@ -41,8 +41,6 @@ async fn main() {
     }
 
 
-    println!("Process finalized. Press any key to continue.");
-    let mut read = String::new();
-    _ = std::io::stdin().read_line(&mut read);
+    println!("Migration pçrocess finalized.");
 
 }

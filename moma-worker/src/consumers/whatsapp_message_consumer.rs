@@ -8,14 +8,15 @@ pub struct WhatsAppQueueConsumer {}
 impl AmqpConsume for WhatsAppQueueConsumer {
     async fn consume(&self, content : String) -> Result<(), ()>
     {
-        let message_obg: WppWhatsAppMessage = serde_json::from_str(&content).unwrap();     
+        let message_obj: WppWhatsAppMessage = serde_json::from_str(&content).unwrap();
         
-        let phone_number = String::from(message_obg.from.unwrap().split("@").next().unwrap());
+        let whatsapp_from = String::from(message_obj.from.unwrap());
+        println!("{}",&whatsapp_from);
 
-        if let Some(message) = message_obg.content {
-            let res = routineflowcontrol::submit(&phone_number, &message).await;
+        if let Some(message) = message_obj.content {
+            let res = routineflowcontrol::submit(&whatsapp_from, &message).await;
             match res {
-                Ok(o) => send_whatsapp_answare(&phone_number, o).await,
+                Ok(o) => send_whatsapp_answare(&whatsapp_from, o).await,
                 Err(e) => println!("{}", e)
             }
         }
@@ -27,11 +28,11 @@ impl AmqpConsume for WhatsAppQueueConsumer {
     }
 }
 
-async fn send_whatsapp_answare(phone_number : &str, process_result : RoutineProcessResult) {
+async fn send_whatsapp_answare(whatsapp_to : &str, process_result : RoutineProcessResult) {
 
     //todo: AMQP Broker to send answare through whatsapp
     println!("Answare message: {}", process_result.get_user_messages());
-    match whatsapp::gateway::send_text(phone_number, &process_result.get_user_messages()).await {
+    match whatsapp::gateway::send_text(whatsapp_to, &process_result.get_user_messages()).await {
         Err(e) => println!("WhatsApp Error: {}",e.to_string()),
         Ok(()) => println!("WhatsApp OK;")
     } 

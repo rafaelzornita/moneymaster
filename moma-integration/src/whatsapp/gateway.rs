@@ -26,7 +26,9 @@ pub async fn send_text(destination: &str, message: &str) -> Result<(), Integrati
     let payload = serde_json::json!({
         "phone": destination,
         "message": &message,
+        "isLid": destination.ends_with("@lid"),
     });
+    
     let mut response = 
             Request::post(&url)
             .header("Authorization", format!("Bearer {}", generate_bearer_token(&config).await?))

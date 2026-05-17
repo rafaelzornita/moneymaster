@@ -1,5 +1,5 @@
 use std::sync::{Arc, Mutex};
-use actix_web::{web, App, HttpResponse, HttpServer};
+use actix_web::{web, App, HttpServer};
 use coi::container;
 use coi_actix_web::inject;
 use moma_shared::messages::whatsapp_message::WppWhatsAppMessage;
@@ -61,7 +61,7 @@ async fn wppwhatsapp_handler(message: web::Json<WppWhatsAppMessage>, #[inject] a
 
     is_valid = is_valid && raw_message.msg_type.map_or(false, |message| message.eq("chat"));
     is_valid = is_valid && raw_message.event.map_or(false, |event| event.eq("onmessage"));
-    is_valid = is_valid && raw_message.from.clone().map_or(false, |user| user.ends_with("@c.us"));
+    is_valid = is_valid && raw_message.from.clone().map_or(false, |user| user.ends_with("@c.us") || user.ends_with("@lid"));
     //Dont validate in field because sometimes can be "out"
 
     println!("Msg valid? {is_valid} from: {:?}", &raw_message.from);
